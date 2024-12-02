@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Limited-Time Sale</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }   
+
+      /* Product Section */
+      .product-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 20px;
+        background-color: rgb(230, 219, 219);
+        margin: 20px auto;
+        max-width: 1200px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .product-section img {
+        max-width: 300px;
+        border-radius: 10px;
+      }
+      .product-details {
+        margin-left: 20px;
+      }
+      .product-details h2 {
+        color: #ff4500;
+        margin-bottom: 10px;
+      }
+      .product-details ul {
+        margin-top: 10px;
+      }
+      .product-details ul li {
+        margin-bottom: 5px;
+      }
+
+      /* Pricing Section */
+      .pricing {
+        margin-top: 20px;
+      }
+      .pricing .price {
+        font-size: 2rem;
+        color: #ff4500;
+        margin-top: 10px;
+      }
+      .pricing .original-price {
+        text-decoration: line-through;
+        color: #666;
+        margin-right: 10px;
+      }
+
+      /* Call-to-Action */
+      .cta {
+        margin-top: 20px;
+      }
+      .cta button {
+        background-color: #ff4500;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .cta button:hover {
+        background-color: #e63e00;
+      }
+
+      /* Footer Section */
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px 10px;
+        margin-top: 30px;
+      }
+      footer a {
+        color: #ff4500;
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .card img {
+        border-radius: 10px 10px 0 0;
+      }
+      .badge-offer {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #ff4500;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+      }
+      .card-body h5 {
+        color: #ff4500;
+      }
+      .original-price {
+        text-decoration: line-through;
+        color: #666;
+        margin-right: 5px;
+      }
+      .discounted-price {
+        color: #28a745;
+        font-weight: bold;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+
+      /* Header Section */
+      header {
+        background-color: #54de5d; /* Orange-red color */
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+        margin-top: 50px;
+        position: relative;
+      }
+
+      header h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
+
+      header p {
+        font-size: 1.4rem;
+        margin-bottom: 30px;
+      }
+
+      header .cta-btn {
+        background-color: #28a745; /* Green color for CTA */
+        color: white;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      header .cta-btn:hover {
+        background-color: #218838; /* Darker green for hover effect */
+      }
+
+      /* Countdown Timer Styles */
+      .timer {
+        font-size: 2rem;
+        color: #fff;
+        background-color: #333;
+        padding: 15px;
+        border-radius: 5px;
+        display: inline-block;
+      }
+
+      /* Testimonial Section */
+      .testimonial-section {
+        background-color: #ffffff;
+        padding: 40px 20px;
+        text-align: center;
+        margin: 50px 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+
+      .testimonial-section h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 30px;
+      }
+
+      .customer-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #5b5654;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-content {
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+        font-style: italic;
+ }
+
+      .customer-name {
+        font-weight: bold;
+        color: #333;
+        margin-top: 15px;
+      }
+
+      .customer-position {
+        color: #666;
+        font-size: 0.9rem;
+      }
+      .audio-video-section {
+        background-color: #fff;
+        padding: 40px 20px;
+        text-align: center;
+        margin: 50px auto;
+        max-width: 1200px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Limited-Time Sale Banner */
+      .sale-banner {
+        background-color: #ff4500;
+        color: white;
+        padding: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+      }
+
+      .audio-video {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .audio-video-item {
+            width: 45%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .audio-video-item h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .audio-video-item p {
+            color: #555;
+        }
+
+        .audio-video-item video, .audio-video-item audio {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .audio-video-item .title {
+            font-size: 1.2rem;
+            color: #ff4500;
+        }
+    
+       .navbar {
+    width: 100%;
+    background-color: #9a3c3c;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navdiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    padding: 10px 0;
+  }
+
+  .logo a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul li {
+    margin: 0 15px;
+  }
+
+  ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+
+  ul li a:hover {
+    color: #f0a500;
+  }
+
+  button {
+    background-color: #f0a500;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  button:hover {
+    background-color: #d48d00;
+    transform: scale(1.05);
+  }
+
+   @media (max-width: 768px) {
+    ul {
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      display: none;
+    } 
+
+    ul li {
+      margin: 10px 0;
+    }
+
+    .navdiv.show ul {
+      display: flex;
+    }
+
+    button {
+      margin: 10px 0;
+    }
+  }
+    
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <h1 id="home" >Limited-Time Sale: Up to 50% OFF!</h1>
+      <p>
+        Hurry! Get the best deals on our popular products before time runs out.
+      </p>
+      <a href="#shop-now" class="cta-btn">Shop Now</a>
+      <div class="timer" id="countdown-timer">
+        <strong>Sale Ends In:</strong> <span id="timer">12:00:00</span>
+      </div>
+    </header>
+    <nav class="navbar">
+      <div class="navdiv">
+        <div class="logo"><a href="#">Offer-mart</a></div>
+         <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#trust">Trusted By</a></li>
+            <li><a href="#about-us">About us</a></li>
+            <li><a href="#product">Product</a></li>
+            <li><a href="#contact">Contact us</a></li>
+            <button>SignIn</button>
+            <button type="submit">SignUp</button>
+          </ul>
+      </div>
+    </nav>
+
+    <script>
+      // Simple Countdown Timer
+      function startCountdown(duration) {
+        let timer = duration,
+          hours,
+          minutes,
+          seconds;
+        setInterval(function () {
+          hours = parseInt(timer / 3600, 10);
+          minutes = parseInt((timer % 3600) / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+
+          hours = hours < 10 ? "0" + hours : hours;
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          document.getElementById("timer").textContent =
+            hours + ":" + minutes + ":" + seconds;
+
+          if (--timer < 0) {
+            timer = 0;
+            document.getElementById("timer").textContent = "00:00:00";
+          }
+        }, 1000);
+      }
+
+      // Start the countdown (12 hours duration)
+      startCountdown(12 * 3600); // 12 hours countdown
+    </script>
+
+    <div class="container my-5 home" id="product">
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="position-relative">
+              <img src="./image/img_5.avif" class="card-img-top" alt="Product 1" />
+              <span class="badge-offer">Limited Offer</span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Stylish Shoes</h5>
+              <p class="card-text">
+                Experience the best quality and features with this amazing
+                product.
+              </p>
+              <p>
+                <span class="original-price">9,999</span>
+                <span class="discounted-price">4,999</span>
+              </p>
+              <a href="#" class="btn btn-primary w-100">Buy Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="position-relative">
+              <img src="./image/prd_2.avif" class="card-img-top" alt="Product 2" />
+              <span class="badge-offer">Limited Offer</span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Product 2</h5>
+              <p class="card-text">
+                A perfect choice for those who value quality and design.
+              </p>
+              <p>
+                <span class="original-price">$120.00</span>
+                <span class="discounted-price">$59.99</span>
+              </p>
+              <a href="#" class="btn btn-primary w-100">Buy Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="position-relative">
+              <img src="./image/img_3.jpg" style="padding: 40px; border-radius: 5px;" class="card-img-top" alt="Product 3" />
+              <span class="badge-offer">Limited Offer</span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Product 3</h5>
+              <p class="card-text">
+                Grab this deal for an unbeatable price on this high-quality
+                item.
+              </p>
+              <p>
+                <span class="original-price">$150.00</span>
+                <span class="discounted-price">$79.99</span>
+              </p>
+              <a href="#" class="btn btn-primary w-100">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <div class="container">
+        <h1>Our Exclusive Audio and Video Collection</h1>
+        <p>Experience multimedia content like never before!</p>
+
+        <div class="audio-video">
+            <!-- Audio Section -->
+            <div class="audio-video-item">
+                <h2>Enjoy Our Music</h2>
+                <p>Listen to this exclusive track and experience top-notch sound quality.</p>
+                <audio controls>
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <!-- Video Section -->
+            <div class="audio-video-item">
+                <h2>Watch Our Promo Video</h2>
+                <p>Get an inside look at our product lineup in this exciting video!</p>
+                <video controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Testimonial Section -->
+    <section id="trust" class="testimonial-section">
+      <h2>What Our Customers Are Saying</h2>
+
+      <div class="testimonial-container">
+        <!-- Customer Image -->
+        <img
+          src="./image/client_1.webp"
+          alt="Customer Image"
+          class="customer-image"
+        />
+        <h3>Dr.Anvith Singh</h3>
+
+        <!-- Testimonial Content -->
+        <div class="testimonial-content">
+          <p>
+            "This product exceeded my expectations! I was hesitant at first, but
+            after using it for just a week, I can already see a huge difference.
+            It's easy to use, affordable, and works just as described. Highly
+            recommend it!"
+          </p>
+        </div>
+
+        <!-- contact us section -->
+
+<section id="contact" style="padding: 30px 0;border: 2px solid black; background-color: #d1cbcb;">
+  <div class="container"">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 style="color: #333; font-size:50px;">Contact Us</h2>
+        <p style="font-size: 1.2rem; color: #555;">
+          Have questions or need assistance? We’re here to help! Reach out to us using the form below or through our contact details, and we’ll get back to you as soon as possible.
+        </p>
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 10px;">
+            <i class="fas fa-envelope" style="color: #007bff;"></i>
+            <strong>Email:</strong> support@ecommerce.com
+          </li>
+          <li style="margin-bottom: 10px;">
+            <i class="fas fa-phone" style="color: #007bff;"></i>
+            <strong>Phone:</strong> +1 123-456-7890
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt" style="color: #007bff;"></i>
+            <strong>Address:</strong> 123 Commerce Lane, E-Shop City, 56789
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <form>
+          <div class="form-group">
+            <label for="name" style="font-weight: bold;">Your Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email" style="font-weight: bold;">Your Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required />
+          </div>
+          <div class="form-group">
+            <label for="message" style="font-weight: bold;">Your Message</label>
+            <textarea class="form-control" id="message" rows="5" placeholder="Enter your message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="background-color: #007bff; border-color: #007bff;">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Footer -->
+   <footer style="background-color: #333; color: #fff; padding: 30px 0;">
+  <div class="container">
+    <div class="row">
+      <!-- About Us Column -->
+      <div class="col-lg-4 col-md-6 mb-4" id="about-us">
+        <h5 >About Us</h5>
+        <p style="color: #ccc;">
+          We are committed to providing exceptional quality and exclusive products. Discover our limited-edition collections and elevate your lifestyle.
+        </p>
+      </div>
+      
+      <!-- Quick Links Column -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5>Quick Links</h5>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="#about-us" style="color: #fff; text-decoration: none;">About Us</a></li>
+          <li><a href="#contact" style="color: #fff; text-decoration: none;">Contact Us</a></li>
+          <li><a href="#product" style="color: #fff; text-decoration: none;">Products</a></li>
+          <li><a href="#faq" style="color: #fff; text-decoration: none;">FAQs</a></li>
+        </ul>
+      </div>
+      
+      <!-- Contact Information Column -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5>Contact Info</h5>
+        <ul style="list-style: none; padding: 0;">
+          <li><i class="fas fa-envelope"></i> support@ecommerce.com</li>
+          <li><i class="fas fa-phone"></i> +1 123-456-7890</li>
+          <li><i class="fas fa-map-marker-alt"></i> 123 Commerce Lane, E-Shop City</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Footer Bottom -->
+    <div class="row mt-4">
+      <div class="col text-center">
+        <p style="margin: 0; font-size: 0.9rem; color: #aaa;">
+          © 2024 E-Shop. All Rights Reserved.
+        </p>
+        <ul class="social-icons" style="list-style: none; padding: 0; margin-top: 10px; display: inline-flex;">
+          <li style="margin-right: 15px;">
+            <a href="#" style="color: #fff;"><i class="fab fa-facebook-f"></i></a>
+          </li>
+          <li style="margin-right: 15px;">
+            <a href="#" style="color: #fff;"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li style="margin-right: 15px;">
+            <a href="#" style="color: #fff;"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#" style="color: #fff;"><i class="fab fa-linkedin-in"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script>
+      // Simple Countdown Timer
+      function startCountdown(duration) {
+        let timer = duration,
+          hours,
+          minutes,
+          seconds;
+        setInterval(function () {
+          hours = parseInt(timer / 3600, 10);
+          minutes = parseInt((timer % 3600) / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+
+          hours = hours < 10 ? "0" + hours : hours;
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          document.getElementById("timer").textContent =
+            hours + ":" + minutes + ":" + seconds;
+
+          if (--timer < 0) {
+            timer = 0;
+            document.getElementById("timer").textContent = "00:00:00";
+          }
+        }, 1000);
+      }
+
+      // Start a 12-hour countdown
+      startCountdown(12 * 3600);
+    </script>
+  </body>
+</html>
